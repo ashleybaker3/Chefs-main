@@ -1,0 +1,31 @@
+@model List<Dish>
+
+@{
+    ViewData["Title"] = "Dishes";
+}
+
+<partial name="_Navbar"/>
+<a asp-controller="Home" asp-action="AddDish">Add a Dish</a>
+
+<div class="text-start">
+    <h3 class="row border-bottom border-dark">Yum! Take a look at our tasty dishes!</h3>
+    <table class="table table-striped border border-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Tastiness</th>
+                <th scope="col">Calories</th>
+            </tr>
+            @foreach (Dish d in Model)
+            {
+                <tr>
+                    <td>@d.Name</td>
+                    <td>@d.Creator.FullName()</td>
+                    <td>@d.Tastiness</td>
+                    <td>@d.Calories</td>
+                </tr>
+            }
+        </thead>
+    </table>
+</div>
